@@ -1,0 +1,32 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mysql"
+    url = env("DATABASE_URL")
+
+}
+
+model User {
+    id Int @id  @default(autoincrement())
+    firstName String 
+    lastName String
+    age Int @db.UnsignedInt
+    createdAt DateTime @default(now())
+    updateAt DateTime @updatedAt
+    houseOwned House[] @relation("HouseOwner")
+    houseBuilt House[] @relation("HouseBuilder")
+}
+
+model House {
+    id Int @id @default(autoincrement())
+    address String @unique
+    wifiPassword String?
+    createdAt DateTime @default(now())
+    updateAt DateTime @updatedAt
+    owner User @relation("HouseOwner",fields: [ownerId], references: [id])
+    ownerId Int
+    builtBy User @relation("HouseBuilder",fields: [builtById], references: [id])
+    builtById Int
+}
