@@ -1,0 +1,26 @@
+{
+  "name": "prisma_learn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "prisma": {
+    "seed": "node prisma/seed/seeding.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^4.16.2",
+    "express": "^4.18.2",
+    "mysql2": "^3.5.1",
+    "prisma": "^4.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
